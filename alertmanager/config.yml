@@ -1,0 +1,20 @@
+global:
+
+templates:
+- '/etc/alertmanager/templates/*.tmpl'
+receivers:
+- name: 'telegram'
+  telegram_configs:
+  - api_url: 'https://api.telegram.org'
+    bot_token: '5500383322:AAHtj284_zClZSJUaCbReb7trkFZ2Pry9o4'
+    chat_id: -1001770926792
+    send_resolved: true
+    parse_mode: "HTML"
+
+route:
+  group_by:
+  - job
+  group_interval: 10s
+  group_wait: 10s
+  receiver: 'telegram'
+  repeat_interval: 10s
